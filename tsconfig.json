@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
@@ -13,9 +13,8 @@
     "outDir": "dist",
     "sourceMap": true,
     "inlineSources": true,
-    "rootDir": "./",
     "declaration": true,
-    "importsNotUsedAsValues": "error"
+    "rootDir": "./"
   },
   "include": ["**/*.ts"]
 }

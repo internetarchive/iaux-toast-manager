@@ -1,1 +1,2 @@
-export { YourWebComponent } from './src/your-webcomponent';
+export { ToastConfig } from './src/toast-config';
+export { ToastTemplate } from './src/toast-template';

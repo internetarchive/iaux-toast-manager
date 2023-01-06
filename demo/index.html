@@ -1,21 +1,104 @@
 <!doctype html>
-<html lang="en-GB">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     html {
-      font-size: 10px; /* This is to match petabox's base font size */
+      font-size: 10px;
     }
 
     body {
-      background: #fafafa;
+      margin: 0;
+      padding: 75px 10px 0 10px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    toast-template {
+      --toastHeightFromTop: 5%;
+      --toastBGColor: #333333;
+      --toastFontColor: #ffffff;
+      --toastTopMargin: 10px;
+    }
+
+    #demo {
+      margin: 0;
+      padding: 0;
+    }
+
+    .actions {
+      position: fixed;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid black;
+      padding: 10px;
+      top: 10px;
+      left: 10px;
     }
   </style>
 </head>
 <body>
-  <app-root></app-root>
+  <div id="demo">
+  </div>
 
-  <script type="module" src="../dist/demo/app-root.js">
+  <script type="module">
+      import { html, render } from 'lit';
+    import '../dist/index.js';
+    import { ToastConfig } from '../dist/index.js';
+
+    /* eslint-disable @typescript-eslint/explicit-function-return-type */
+
+    function renderToastTemplate() {
+      var toastTemplate = document.querySelector('toast-template');
+      if (!toastTemplate) {
+        toastTemplate = document.createElement('toast-template');
+      }
+
+      document.body.appendChild(toastTemplate)
+    }
+
+    
+    render(
+      html`
+        <div class="actions">
+          <button @click=${showToast}>Toast</button>
+        </div>
+
+        <h3>Some Content</h3>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris posuere sollicitudin aliquam. Aenean vel felis arcu. Maecenas convallis dolor ac tortor tristique, congue scelerisque turpis congue. Vestibulum porttitor scelerisque quam, sit amet porta tortor consectetur non. Cras sollicitudin sit amet lacus ac egestas. Nam sollicitudin sem at sagittis laoreet. Donec nec nisl erat. Curabitur interdum in enim vehicula aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce tempus sit amet tortor laoreet volutpat. Vivamus non vehicula felis, aliquet hendrerit odio.</p>
+
+        <p>In laoreet scelerisque tortor, at convallis nisl efficitur vehicula. Donec eu erat a turpis fermentum blandit vitae ut erat. Mauris tincidunt erat sit amet ante suscipit porta. Fusce mollis metus sit amet erat condimentum, eu maximus lacus aliquam. Sed cursus lacus eget sem commodo feugiat. Praesent semper lorem eu sollicitudin blandit. Sed id risus in lacus fermentum tristique. In porttitor malesuada sapien non posuere. Phasellus mollis mauris ultrices est consectetur, id pulvinar magna suscipit. Integer sodales sapien in augue tincidunt, ac tempor ligula cursus. Mauris id justo et dui blandit luctus. Morbi mattis id metus id maximus. Suspendisse quis lobortis erat, sed dignissim neque. Etiam cursus posuere ultricies.</p>
+
+        <p>Maecenas porta ac nulla sed vestibulum. Suspendisse aliquam fermentum mi, id luctus tortor aliquet gravida. Maecenas sed tincidunt quam. Mauris cursus ante sit amet enim egestas, vitae pellentesque metus hendrerit. Sed quis tortor id dui mollis blandit quis ac nunc. Suspendisse tincidunt nisl quis nunc tincidunt, et finibus ipsum elementum. Maecenas congue, neque eget volutpat pulvinar, augue nisl interdum elit, et porta mi augue ut sapien.</p>
+
+        <p>Fusce vel imperdiet justo. Aenean sollicitudin blandit nunc. Cras vitae orci id lorem condimentum tempor. Aliquam ac lectus sed mi suscipit sollicitudin at convallis nisl. Sed semper elementum sagittis. Nam fermentum nulla velit, non tempor massa fermentum non. Duis id ante eget elit gravida semper ac quis ligula. Duis vel libero ligula. Curabitur tempor sed velit nec egestas. Vivamus sit amet volutpat purus. Integer imperdiet mattis erat, vitae dignissim odio accumsan quis. Fusce bibendum lectus quis est molestie, eget scelerisque elit interdum. Etiam imperdiet a leo vitae ultricies. Etiam pretium quam eget sem mollis, quis elementum libero vulputate. Praesent aliquet dictum augue a luctus.</p>
+
+        <p>Maecenas vulputate iaculis mauris nec lobortis. Sed nibh ante, vehicula nec varius et, condimentum in massa. Curabitur a turpis porta, auctor magna in, iaculis ante. Suspendisse potenti. Donec massa orci, sollicitudin in nulla ut, fringilla dignissim elit. Suspendisse porttitor lorem nec sem volutpat ullamcorper. Curabitur blandit est tristique velit pharetra rhoncus. Aliquam vitae mauris ex.</p>
+      `,
+      document.querySelector('#demo')
+    );
+
+    renderToastTemplate();
+
+    const toastTemplate = document.querySelector('toast-template');
+
+    function showToast() {
+      const config = new ToastConfig();
+      config.texts = 'Thank you for your support!1111';
+      config.bgColor = 'black';
+      config.dismisOnClick = true;
+      config.showCloseButton = false;
+
+      toastTemplate.showToast({
+        config
+      });
+    }
+
+    function buttonPress() {
+      alert('You pressed a button.');
+    }
+
   </script>
 </body>
 </html>
