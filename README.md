@@ -29,10 +29,8 @@ All of the config options:
 ```javascript
 const config = new ToastConfig();
 config.texts = 'Thank you for your support!1111';
-config.bgColor = 'black';
 config.showCloseButton = true;
 config.dismisOnClick = false;
-config.closeOnBackdropClick = true;
 ```
 
 # Development

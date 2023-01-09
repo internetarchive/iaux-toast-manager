@@ -29,6 +29,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   closeToast() {
+    console.log('toast clicked!');
     // early return if not allow to close
     if (this.config.dismisOnClick === false) return nothing;
 
@@ -46,10 +47,9 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   static get styles(): CSSResult {
-    const heightFromTop = css`var(--toastHeightFromTop, 15%)`;
+    const toastTopMargin = css`var(--toastTopMargin, 80px)`;
     const toastBGColor = css`var(--toastBGColor, #333333)`;
     const toastFontColor = css`var(--toastFontColor, #ffffff)`;
-    const toastTopMargin = css`var(--toastTopMargin, 10px)`;
 
     return css`
       :host {
@@ -57,9 +57,10 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
         transform: translate(-50%, -50%);
         left: 50%;
         z-index: 2;
-        margin-top: ${toastTopMargin};
         width: fit-content;
         user-select: none;
+        top: ${toastTopMargin};
+        display: inline-grid;
       }
 
       .container {
