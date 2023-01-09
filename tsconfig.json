@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2018",
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
@@ -8,13 +8,18 @@
     "strict": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
     "outDir": "dist",
     "sourceMap": true,
     "inlineSources": true,
+    "rootDir": "./",
     "declaration": true,
-    "rootDir": "./"
+    "importsNotUsedAsValues": "error",
+    /* Experimental Options */
+    "experimentalDecorators": true, 
+    "emitDecoratorMetadata": true, 
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true 
   },
   "include": ["**/*.ts"]
 }
