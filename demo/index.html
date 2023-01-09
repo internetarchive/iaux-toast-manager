@@ -39,7 +39,7 @@
   </div>
 
   <script type="module">
-      import { html, render } from 'lit';
+    import { html, render } from 'lit';
     import { ToastConfig } from '../dist/index.js';
 
     /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -52,7 +52,6 @@
 
       document.body.appendChild(toastTemplate)
     }
-
     
     render(
       html`
@@ -72,8 +71,7 @@
       const toastTemplate = document.querySelector('toast-template');
 
       const config = new ToastConfig();
-      config.texts = 'Thank you for your support!1111';
-      config.bgColor = 'black';
+      config.texts = 'Thank you for your support!';
       config.dismisOnClick = true;
       config.showCloseButton = false;
 

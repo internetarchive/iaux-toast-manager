@@ -8,17 +8,10 @@ export class ToastConfig {
   /**
    * The title that shows in the header
    *
-   * @type {undefined | null}
+   * @type {string}
    * @memberof ToastConfig
    */
   texts?: string;
-
-  /**
-   * Show the close button
-   *
-   * @memberof ToastConfig
-   */
-  showCloseButton: boolean;
 
   /**
    * Show or hide the processing indicator
@@ -27,13 +20,20 @@ export class ToastConfig {
    */
   dismisOnClick: boolean;
 
+  /**
+   * Show the close button
+   *
+   * @memberof ToastConfig
+   */
+  showCloseButton: boolean;
+
   constructor(options?: {
     texts?: string;
-    showCloseButton?: boolean;
     dismisOnClick?: boolean;
+    showCloseButton?: boolean;
   }) {
     this.texts = options?.texts;
-    this.showCloseButton = options?.showCloseButton ?? true;
     this.dismisOnClick = options?.dismisOnClick ?? true;
+    this.showCloseButton = options?.showCloseButton ?? true;
   }
 }

@@ -20,7 +20,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
           <span
             class="toast-message fade-in"
             title="Click/tap to close"
-            @click=${() => this.closeToast}
+            @click=${this.closeToast}
             >${this.config.texts}</span
           >
         `
@@ -29,6 +29,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   closeToast() {
+    console.log('toast clicked!');
     // early return if not allow to close
     if (this.config.dismisOnClick === false) return nothing;
 
