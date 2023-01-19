@@ -86,7 +86,8 @@
     "arrowParens": "avoid"
   },
   "lint-staged": {
-    "*.ts": [      "prettier --write",
+    "*.ts": [
+      "prettier --write",
       "git add"
     ]
   },

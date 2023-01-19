@@ -8,7 +8,7 @@ A Toast manager built on LitElement with support for custom content and light DO
 
 ## Installation
 ```bash
-npm install --save @internetarchive/toast-manager
+yarn add @internetarchive/toast-manager
 ```
 
 ## Usage
@@ -30,29 +30,27 @@ All of the config options:
 const config = new ToastConfig();
 config.texts = 'Thank you for your support!1111';
 config.bgColor = 'black';
-config.showCloseButton = true;
 config.dismisOnClick = false;
-config.closeOnBackdropClick = true;
 ```
 
 # Development
 
 ## Prerequisite
 ```bash
-npm install
+yarn install
 ```
 
 ## Start Development Server
 ```bash
-npm start
+yarn start
 ```
 
 ## Testing
 ```bash
-npm test
+yarn test
 ```
 
 ## Linting
 ```bash
-npm lint
+yarn lint
 ```
