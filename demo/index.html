@@ -53,19 +53,6 @@
       document.body.appendChild(toastTemplate)
     }
     
-    render(
-      html`
-        <div class="actions">
-          <button @click=${showToast}>Show Toast</button>
-        </div>
-
-        <h3>Some Content</h3>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris posuere sollicitudin aliquam. Aenean vel felis arcu. Maecenas convallis dolor ac tortor tristique, congue scelerisque turpis congue. Vestibulum porttitor scelerisque quam, sit amet porta tortor consectetur non. Cras sollicitudin sit amet lacus ac egestas. Nam sollicitudin sem at sagittis laoreet. Donec nec nisl erat. Curabitur interdum in enim vehicula aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce tempus sit amet tortor laoreet volutpat. Vivamus non vehicula felis, aliquet hendrerit odio.</p>
-      `,
-      document.querySelector('#demo')
-    );
-
     function showToast() {
       renderToastTemplate();
       const toastTemplate = document.querySelector('toast-template');
@@ -79,6 +66,19 @@
         config
       });
     }
+
+    render(
+      html`
+        <div class="actions">
+          <button @click=${showToast}>Show Toast</button>
+        </div>
+
+        <h3>Some Content</h3>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris posuere sollicitudin aliquam. Aenean vel felis arcu. Maecenas convallis dolor ac tortor tristique, congue scelerisque turpis congue. Vestibulum porttitor scelerisque quam, sit amet porta tortor consectetur non. Cras sollicitudin sit amet lacus ac egestas. Nam sollicitudin sem at sagittis laoreet. Donec nec nisl erat. Curabitur interdum in enim vehicula aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce tempus sit amet tortor laoreet volutpat. Vivamus non vehicula felis, aliquet hendrerit odio.</p>
+      `,
+      document.querySelector('#demo')
+    );
   </script>
 </body>
 </html>

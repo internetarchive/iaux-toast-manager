@@ -15,6 +15,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   render() {
+    /* eslint-disable lit-a11y/click-events-have-key-events */
     return this.config.texts
       ? html`
           <span
@@ -29,14 +30,9 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   closeToast() {
-    console.log('toast clicked!');
-    // early return if not allow to close
-    if (this.config.dismisOnClick === false) return nothing;
-
-    this.config.texts = '';
-    document.querySelector('toast-template')?.remove();
-
-    return nothing;
+    if (this.config.dismisOnClick) {
+      this.remove();
+    }
   }
 
   /** @inheritdoc */
