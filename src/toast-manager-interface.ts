@@ -1,5 +1,5 @@
-import { LitElement, TemplateResult } from 'lit';
-import { ToastConfig } from './toast-config';
+import type { LitElement, TemplateResult } from 'lit';
+import type { ToastConfig } from './toast-config';
 
 export interface ToastManagerInterface extends LitElement {
   /**

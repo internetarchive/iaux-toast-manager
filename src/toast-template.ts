@@ -1,7 +1,7 @@
-import { LitElement, html, css, CSSResult, TemplateResult, nothing } from 'lit';
-import { property, customElement, query } from 'lit/decorators.js';
+import { LitElement, html, css, CSSResult, nothing } from 'lit';
+import { property, customElement } from 'lit/decorators.js';
 import { ToastConfig } from './toast-config';
-import { ToastManagerInterface } from './toast-manager-interface';
+import type { ToastManagerInterface } from './toast-manager-interface';
 
 @customElement('toast-template')
 export class ToastTemplate extends LitElement implements ToastManagerInterface {
@@ -15,6 +15,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   render() {
+    /* eslint-disable lit-a11y/click-events-have-key-events */
     return this.config.texts
       ? html`
           <span
@@ -29,11 +30,9 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   closeToast() {
-    // early return if not allow to close
-    if (this.config.dismisOnClick === false) return nothing;
-
-    this.config.texts = '';
-    document.querySelector('toast-template')?.remove();
+    if (this.config.dismisOnClick) {
+      this.remove();
+    }
   }
 
   /** @inheritdoc */
@@ -46,20 +45,20 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   static get styles(): CSSResult {
-    const heightFromTop = css`var(--toastHeightFromTop, 15%)`;
+    const toastTopMargin = css`var(--toastTopMargin, 80px)`;
     const toastBGColor = css`var(--toastBGColor, #333333)`;
     const toastFontColor = css`var(--toastFontColor, #ffffff)`;
-    const toastTopMargin = css`var(--toastTopMargin, 10px)`;
 
     return css`
       :host {
         position: absolute;
+        top: ${toastTopMargin};
         transform: translate(-50%, -50%);
         left: 50%;
         z-index: 2;
-        margin-top: ${toastTopMargin};
         width: fit-content;
         user-select: none;
+        display: inline-grid;
       }
 
       .container {

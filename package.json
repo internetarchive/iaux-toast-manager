@@ -1,78 +1,96 @@
 {
   "name": "@internetarchive/toast-manager",
-  "version": "0.0.1-alpha2",
   "description": "A Toast Manager Web Component",
+  "version": "0.0.1-alpha8",
   "repository": {
     "type": "git",
     "url": "https://github.com/internetarchive/iaux-toast-manager.git"
   },
   "license": "AGPL-3.0-only",
+  "author": "Internet Archive",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "prepare": "npm run build",
-    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch --preserve-symlinks\"",
-    "docs": "typedoc",
+    "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
+    "prepare": "rimraf dist && tsc && husky install",
     "build": "tsc",
-    "tsc:watch": "tsc --watch",
-    "lint:eslint": "eslint --ext .ts . --ignore-path .gitignore",
-    "format:eslint": "eslint --ext .ts . --fix --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.ts\" --check --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.ts\" --write --ignore-path .gitignore",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
-    "format": "npm run format:eslint && npm run format:prettier",
-    "circular": "madge --circular .",
-    "test": "tsc && npm run lint && npm run circular && karma start --coverage",
-    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\""
+    "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
+    "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "circular": "madge --circular --extensions ts .",
+    "test": "tsc && yarn run lint && yarn run circular && wtr --coverage",
+    "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\"",
+    "ghpages:build": "rimraf ghpages && yarn run prepare && vite build",
+    "ghpages:publish": "yarn run ghpages:prepare -e $(git branch --show-current)",
+    "ghpages:prepare": "yarn run ghpages:build && touch ghpages/.nojekyll && yarn run ghpages:generate",
+    "ghpages:generate": "gh-pages -t -d ghpages -m \"Build for $(git log --pretty=format:\"%h %an %ai %s\" -n1) [skip ci]\""
   },
-  "dependencies": {
-    "@internetarchive/icon-close": "^1.3.2",
-    "lit": "^2.2.2",
-    "throttle-debounce": "^5.0.0"
-  },
+  "types": "dist/index.d.ts",
   "devDependencies": {
-    "@open-wc/eslint-config": "^2.0.0",
-    "@open-wc/testing": "^3.0.3",
-    "@open-wc/testing-karma": "^3.0.0",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "13.11.1",
-    "@types/throttle-debounce": "^5.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "concurrently": "^5.1.0",
-    "deepmerge": "^3.2.0",
-    "es-dev-server": "^1.23.0",
-    "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "husky": "^1.0.0",
-    "lint-staged": "^8.0.0",
-    "lit-html": "^2.0.2",
-    "madge": "^4.0.1",
-    "prettier": "^2.0.4",
-    "tslib": "^1.11.0",
-    "typedoc": "^0.17.8",
-    "typescript": "^3.9.7"
+    "@open-wc/eslint-config": "^8.0.0",
+    "@open-wc/testing": "^3.1.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "@web/dev-server": "^0.1.32",
+    "@web/test-runner": "^0.14.0",
+    "concurrently": "^7.2.2",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-lit-a11y": "^2.2.0",
+    "eslint-plugin-wc": "^1.3.2",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.0",
+    "madge": "^5.0.1",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "sinon": "^14.0.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
     "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
-    ]
+      "@open-wc",
+      "prettier"
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": [
+        "error"
+      ],
+      "class-methods-use-this": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": [
+        "off",
+        "ignorePackages",
+        {
+          "js": "never",
+          "ts": "never"
+        }
+      ]
+    }
   },
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.ts": [
-      "prettier --write",
+    "*.ts": [      "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "lit": "^2.2.7"
   }
 }
