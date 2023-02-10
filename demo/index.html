@@ -61,6 +61,7 @@
       config.texts = 'Thank you for your support!';
       config.dismisOnClick = true;
       config.showCloseButton = false;
+      config.dismisOnOutsideClick = true;
 
       toastTemplate.showToast({
         config
@@ -70,7 +71,7 @@
     render(
       html`
         <div class="actions">
-          <button @click=${showToast}>Show Toast</button>
+          <button @click=${showToast} class="show-button">Show Toast</button>
         </div>
 
         <h3>Some Content</h3>

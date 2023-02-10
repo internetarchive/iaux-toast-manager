@@ -13,6 +13,26 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
    */
   @property({ type: Object }) config: ToastConfig = new ToastConfig();
 
+  firstUpdated() {
+    this.setupEventListener();
+  }
+
+  /**
+   * setup document click listener
+   */
+  private setupEventListener() {
+    if (this.config.dismisOnOutsideClick) {
+      document.addEventListener('click', event => {
+        const toastElement = document.querySelector('.show-button');
+        if (toastElement !== event.target) {
+          this.closeToast();
+        }
+      });
+    } else {
+      document.removeEventListener('click', () => {});
+    }
+  }
+
   /** @inheritdoc */
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */

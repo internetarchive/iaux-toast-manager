@@ -6,7 +6,7 @@
  */
 export class ToastConfig {
   /**
-   * The title that shows in the header
+   * The texts display in toast
    *
    * @type {string}
    * @memberof ToastConfig
@@ -14,11 +14,18 @@ export class ToastConfig {
   texts?: string;
 
   /**
-   * Show or hide the processing indicator
+   * Close toast on click or tap
    *
    * @memberof ToastConfig
    */
   dismisOnClick: boolean;
+
+  /**
+   * Close toast on outside click on document
+   *
+   * @memberof ToastConfig
+   */
+  dismisOnOutsideClick: boolean;
 
   /**
    * Show the close button
@@ -30,10 +37,12 @@ export class ToastConfig {
   constructor(options?: {
     texts?: string;
     dismisOnClick?: boolean;
+    dismisOnOutsideClick?: boolean;
     showCloseButton?: boolean;
   }) {
     this.texts = options?.texts;
     this.dismisOnClick = options?.dismisOnClick ?? true;
+    this.dismisOnOutsideClick = options?.dismisOnOutsideClick ?? true;
     this.showCloseButton = options?.showCloseButton ?? true;
   }
 }
