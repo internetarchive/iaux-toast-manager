@@ -31,6 +31,11 @@ const config = new ToastConfig();
 config.texts = 'Thank you for your support!1111';
 config.bgColor = 'black';
 config.dismisOnClick = false;
+
+const toastTemplate = document.querySelector('toast-template');
+toastTemplate.showToast({
+  config
+});
 ```
 
 # Development
