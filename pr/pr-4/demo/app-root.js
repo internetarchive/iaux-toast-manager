@@ -14,7 +14,7 @@ const ct=function(){const t=document.createElement("link").relList;if(t&&t.suppo
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var R,L;class S extends m{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t,e;const i=super.createRenderRoot();return(t=(e=this.renderOptions).renderBefore)!==null&&t!==void 0||(e.renderBefore=i.firstChild),i}update(t){const e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=at(e,this.renderRoot,this.renderOptions)}connectedCallback(){var t;super.connectedCallback(),(t=this._$Do)===null||t===void 0||t.setConnected(!0)}disconnectedCallback(){var t;super.disconnectedCallback(),(t=this._$Do)===null||t===void 0||t.setConnected(!1)}render(){return A}}S.finalized=!0,S._$litElement$=!0,(R=globalThis.litElementHydrateSupport)===null||R===void 0||R.call(globalThis,{LitElement:S});const et=globalThis.litElementPolyfillSupport;et==null||et({LitElement:S});((L=globalThis.litElementVersions)!==null&&L!==void 0?L:globalThis.litElementVersions=[]).push("3.2.1");class D{constructor(t){var e,i,s;this.texts=t==null?void 0:t.texts,this.dismisOnClick=(e=t==null?void 0:t.dismisOnClick)!==null&&e!==void 0?e:!0,this.dismisOnOutsideClick=(i=t==null?void 0:t.dismisOnOutsideClick)!==null&&i!==void 0?i:!0,this.showCloseButton=(s=t==null?void 0:t.showCloseButton)!==null&&s!==void 0?s:!0}}function ht(n,t,e,i){var s=arguments.length,o=s<3?t:i===null?i=Object.getOwnPropertyDescriptor(t,e):i,r;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")o=Reflect.decorate(n,t,e,i);else for(var h=n.length-1;h>=0;h--)(r=n[h])&&(o=(s<3?r(o):s>3?r(t,e,o):r(t,e))||o);return s>3&&o&&Object.defineProperty(t,e,o),o}function St(n,t){if(typeof Reflect=="object"&&typeof Reflect.metadata=="function")return Reflect.metadata(n,t)}/**
+ */var R,L;class S extends m{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t,e;const i=super.createRenderRoot();return(t=(e=this.renderOptions).renderBefore)!==null&&t!==void 0||(e.renderBefore=i.firstChild),i}update(t){const e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=at(e,this.renderRoot,this.renderOptions)}connectedCallback(){var t;super.connectedCallback(),(t=this._$Do)===null||t===void 0||t.setConnected(!0)}disconnectedCallback(){var t;super.disconnectedCallback(),(t=this._$Do)===null||t===void 0||t.setConnected(!1)}render(){return A}}S.finalized=!0,S._$litElement$=!0,(R=globalThis.litElementHydrateSupport)===null||R===void 0||R.call(globalThis,{LitElement:S});const et=globalThis.litElementPolyfillSupport;et==null||et({LitElement:S});((L=globalThis.litElementVersions)!==null&&L!==void 0?L:globalThis.litElementVersions=[]).push("3.2.1");class D{constructor(t){var e,i,s;this.texts=t==null?void 0:t.texts,this.dismissOnClick=(e=t==null?void 0:t.dismissOnClick)!==null&&e!==void 0?e:!0,this.dismissOnOutsideClick=(i=t==null?void 0:t.dismissOnOutsideClick)!==null&&i!==void 0?i:!0,this.showCloseButton=(s=t==null?void 0:t.showCloseButton)!==null&&s!==void 0?s:!0}}function ht(n,t,e,i){var s=arguments.length,o=s<3?t:i===null?i=Object.getOwnPropertyDescriptor(t,e):i,r;if(typeof Reflect=="object"&&typeof Reflect.decorate=="function")o=Reflect.decorate(n,t,e,i);else for(var h=n.length-1;h>=0;h--)(r=n[h])&&(o=(s<3?r(o):s>3?r(t,e,o):r(t,e))||o);return s>3&&o&&Object.defineProperty(t,e,o),o}function St(n,t){if(typeof Reflect=="object"&&typeof Reflect.metadata=="function")return Reflect.metadata(n,t)}/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -26,14 +26,14 @@ const ct=function(){const t=document.createElement("link").relList;if(t&&t.suppo
  * @license
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */var z;((z=window.HTMLSlotElement)===null||z===void 0?void 0:z.prototype.assignedElements)!=null;let q=class extends S{constructor(){super(...arguments),this.config=new D}firstUpdated(){this.setupEventListener()}setupEventListener(){this.config.dismisOnOutsideClick?document.addEventListener("click",t=>{document.querySelector(".show-button")!==t.target&&this.closeToast()}):document.removeEventListener("click",()=>{})}render(){return this.config.texts?lt`
+ */var z;((z=window.HTMLSlotElement)===null||z===void 0?void 0:z.prototype.assignedElements)!=null;let q=class extends S{constructor(){super(...arguments),this.config=new D}firstUpdated(){this.setupEventListener()}setupEventListener(){this.config.dismissOnOutsideClick?document.addEventListener("click",t=>{document.querySelector(".show-button")!==t.target&&this.closeToast()}):document.removeEventListener("click",()=>{})}render(){return this.config.texts?lt`
           <span
             class="toast-message fade-in"
             title="Click/tap to close"
             @click=${this.closeToast}
             >${this.config.texts}</span
           >
-        `:u}closeToast(){this.config.dismisOnClick&&this.remove()}async showToast(t){this.config=t.config,await this.updateComplete,this.focus()}static get styles(){const t=k`var(--toastTopMargin, 80px)`,e=k`var(--toastBGColor, #333333)`,i=k`var(--toastFontColor, #ffffff)`;return k`
+        `:u}closeToast(){this.config.dismissOnClick&&this.remove()}async showToast(t){this.config=t.config,await this.updateComplete,this.focus()}static get styles(){const t=k`var(--toastTopMargin, 80px)`,e=k`var(--toastBGColor, #333333)`,i=k`var(--toastFontColor, #ffffff)`;return k`
       :host {
         position: absolute;
         top: ${t};
@@ -78,7 +78,7 @@ const ct=function(){const t=document.createElement("link").relList;if(t&&t.suppo
       .visible {
         display: inline-block;
       }
-    `}};ht([Tt({type:Object}),St("design:type",D)],q.prototype,"config",void 0);q=ht([wt("toast-template")],q);function xt(){let n=document.querySelector("toast-template");n||(n=document.createElement("toast-template")),document.body.appendChild(n)}function Ot(){xt();const n=document.querySelector("toast-template"),t=new D;t.texts="Thank you for your support!",t.dismisOnClick=!0,t.showCloseButton=!1,t.dismisOnOutsideClick=!0,n.showToast({config:t})}at(lt`
+    `}};ht([Tt({type:Object}),St("design:type",D)],q.prototype,"config",void 0);q=ht([wt("toast-template")],q);function xt(){let n=document.querySelector("toast-template");n||(n=document.createElement("toast-template")),document.body.appendChild(n)}function Ot(){xt();const n=document.querySelector("toast-template"),t=new D;t.texts="Thank you for your support!",t.dismissOnClick=!0,t.showCloseButton=!1,t.dismissOnOutsideClick=!0,n.showToast({config:t})}at(lt`
         <div class="actions">
           <button @click=${Ot} class="show-button">Show Toast</button>
         </div>
