@@ -18,14 +18,14 @@ export class ToastConfig {
    *
    * @memberof ToastConfig
    */
-  dismisOnClick: boolean;
+  dismissOnClick: boolean;
 
   /**
    * Close toast on outside click on document
    *
    * @memberof ToastConfig
    */
-  dismisOnOutsideClick: boolean;
+  dismissOnOutsideClick: boolean;
 
   /**
    * Show the close button
@@ -36,13 +36,13 @@ export class ToastConfig {
 
   constructor(options?: {
     texts?: string;
-    dismisOnClick?: boolean;
-    dismisOnOutsideClick?: boolean;
+    dismissOnClick?: boolean;
+    dismissOnOutsideClick?: boolean;
     showCloseButton?: boolean;
   }) {
     this.texts = options?.texts;
-    this.dismisOnClick = options?.dismisOnClick ?? true;
-    this.dismisOnOutsideClick = options?.dismisOnOutsideClick ?? true;
+    this.dismissOnClick = options?.dismissOnClick ?? true;
+    this.dismissOnOutsideClick = options?.dismissOnOutsideClick ?? true;
     this.showCloseButton = options?.showCloseButton ?? true;
   }
 }

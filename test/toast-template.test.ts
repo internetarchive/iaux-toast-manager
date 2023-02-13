@@ -14,8 +14,8 @@ describe('ToastTemplate', () => {
       html`<toast-template .config=${config}></toast-template>`
     );
 
-    expect(config.dismisOnClick).to.equal(true);
-    expect(config.dismisOnOutsideClick).to.equal(true);
+    expect(config.dismissOnClick).to.equal(true);
+    expect(config.dismissOnOutsideClick).to.equal(true);
     expect(config.showCloseButton).to.equal(true);
 
     const message = el.shadowRoot?.querySelector('.toast-message');
@@ -39,8 +39,8 @@ describe('ToastTemplate', () => {
   it('close toast message on click or tap', async () => {
     const config = new ToastConfig();
     config.texts = 'Thank you for your support!';
-    config.dismisOnClick = true;
-    config.dismisOnOutsideClick = true;
+    config.dismissOnClick = true;
+    config.dismissOnOutsideClick = true;
 
     const el = await fixture<ToastTemplate>(
       html`<toast-template .config=${config}></toast-template>`
