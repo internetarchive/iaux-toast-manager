@@ -1,7 +1,7 @@
 {
   "name": "@internetarchive/toast-manager",
   "description": "A Toast Manager Web Component",
-  "version": "0.0.1-alpha9",
+  "version": "0.0.1-alpha10",
   "repository": {
     "type": "git",
     "url": "https://github.com/internetarchive/iaux-toast-manager.git"

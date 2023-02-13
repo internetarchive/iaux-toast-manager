@@ -21,7 +21,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
    * setup document click listener
    */
   private setupEventListener() {
-    if (this.config.dismisOnOutsideClick) {
+    if (this.config.dismissOnOutsideClick) {
       document.addEventListener('click', event => {
         const toastElement = document.querySelector('.show-button');
         if (toastElement !== event.target) {
@@ -50,7 +50,7 @@ export class ToastTemplate extends LitElement implements ToastManagerInterface {
 
   /** @inheritdoc */
   closeToast() {
-    if (this.config.dismisOnClick) {
+    if (this.config.dismissOnClick) {
       this.remove();
     }
   }
