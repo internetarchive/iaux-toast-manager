@@ -14,7 +14,6 @@
     "inlineSources": true,
     "rootDir": "./",
     "declaration": true,
-    "importsNotUsedAsValues": "error",
     /* Experimental Options */
     "experimentalDecorators": true, 
     "emitDecoratorMetadata": true, 
